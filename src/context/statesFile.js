@@ -1,5 +1,6 @@
 import { useState } from "react";
 import contextStore from "./contextFile";
+import { server_api } from "../components/api";
 
 const StateStore = (props)=>{
 
@@ -32,8 +33,6 @@ const StateStore = (props)=>{
     
     // login details 
 
-    const host="https://service2-8lpw.onrender.com/skyview";
-
     const [userData, setuserData] = useState()
     const [loginDetails, setloginDetails] = useState({
         id:"",
@@ -42,7 +41,7 @@ const StateStore = (props)=>{
 
     const getUserApi=async(id)=>{
 
-        const response = await fetch(`${host}/getUsers/${id}`,{
+        const response = await fetch(`${server_api}/getUsers/${id}`,{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
@@ -55,7 +54,7 @@ const StateStore = (props)=>{
 
     const [userTickets, setUserTickets] = useState([])
     const getUserTickets=async(id)=>{
-        const response = await fetch(`${host}/showuserTickets/${id}`,{
+        const response = await fetch(`${server_api}/showuserTickets/${id}`,{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
@@ -68,7 +67,7 @@ const StateStore = (props)=>{
     const [allTickets, setallTickets] = useState([])
    
     const getAllTickets=async(id)=>{
-        const response = await fetch(`${host}/showAllTickets`,{
+        const response = await fetch(`${server_api}/showAllTickets`,{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
@@ -76,6 +75,19 @@ const StateStore = (props)=>{
         })
         const json = await response.json();
         setallTickets(json);
+    }
+
+    const [allBoughTickets, setAllBoughTickets] = useState([])
+    const allBoughtTick = async()=>{
+        const response = await fetch(`${server_api}/allBoughtTickets`,{
+            method:"GET",
+            headers:{
+                "Content-Type":"application/json",
+            }
+        })
+
+        const json = await response.json();
+        setAllBoughTickets(json);
     }
 
 
@@ -89,7 +101,8 @@ const StateStore = (props)=>{
                 getUserApi,userData,
                 loginDetails, setloginDetails,
                 userTickets,getUserTickets,setUserTickets,
-                allTickets,getAllTickets
+                allTickets,getAllTickets,setallTickets,
+                allBoughTickets,allBoughtTick
             }}
         >
             {props.children}

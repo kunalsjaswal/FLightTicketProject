@@ -13,6 +13,8 @@ function FrontPage() {
   setInterval(()=>{
     if(localStorage.getItem('token')){
       navigate('/dashboard',{replace:true});
+    }else if(localStorage.getItem('adminId')){
+      navigate('/adminPage',{replace:true});
     }else{
       navigate('/home',{replace:true});
     }

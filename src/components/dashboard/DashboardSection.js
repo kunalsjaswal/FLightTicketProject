@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { DashBoardStyleDiv } from './DashboardStyle'
-import TicketBook from '../ticket/TicketBook'
 import contextStore from '../../context/contextFile'
+import InfoIcon from '@mui/icons-material/Info';
+import FlightIcon from '@mui/icons-material/Flight';
+
 
 const DashboardSection = () => {
   const {userTickets,getUserTickets} = useContext(contextStore)
@@ -10,45 +12,60 @@ const DashboardSection = () => {
     console.log(userTickets)
   },[])
 
+  const showInfoHandler=(indx)=>{
+    document.getElementById(`info-section-${indx}`).style.display= "block";
+  }
+
+  const hideInfoHandler=(indx)=>{
+    document.getElementById(`info-section-${indx}`).style.display= "none";
+
+  }
+
   return (
     <DashBoardStyleDiv>
         <h1>Dashboard</h1>
         <h3>Welcome {localStorage.getItem('username')}!</h3>
 
-        <div className="buy-new">
-            <TicketBook/>
-        </div>
 
         <div className='user-tickets'>
             <h2>Tickets History</h2>
             
             <div className="tickets">
 
-                {userTickets.length === 0 && <span>No ticket found</span>}
+              {userTickets.length === 0 && 
+                  <div className="no-ticket-card">
+                    No Ticket Found 
+                    <div className="circle"></div>
+                  </div>
+              }
                 {userTickets.length > 0 &&
-                  userTickets.map((val,ind)=>(
-                    <div className='ticket-card'>
-                      
-                      <div className="dest">
-                        <h2>{val.source}</h2>
-                        <h3>To</h3>
-                        <h2>{val.destination}</h2>
-                      </div>
-
-                      <div className="rest">
-                        <h5>plane type: {val.plane}</h5>
-                        <h5>Trip type: {val.trip}</h5>
-                        <h5>plane type: {val.plane}</h5>
-                      </div>
-
-                      <div className="cost">
-                          <h5>Date: {val.date}</h5>
-                          <h5>Price: Rs. {val.price}</h5>
-                      </div>
-
+                  
+                  userTickets.map((val,indx)=>(
+                    <div className="ticket-card" data-aos="fade-left" key={indx}>
+                        <InfoIcon 
+                         className='info-icon' 
+                         fontSize='medium' 
+                         onMouseEnter={()=>showInfoHandler(indx)}
+                         onMouseLeave={()=>hideInfoHandler(indx)}
+                         />
+                        <div id={`info-section-${indx}`} class="info-section" data-aos="fade">
+                            Date  &nbsp;: {val.date.substr(0,10)}
+                            <br />
+                            Seats : {val.seats}
+                            <br />
+                            Plane : {val.plane}
+                            <br />
+                            Trip &nbsp;: {val.trip}
+                        </div>
+                        <h3>{val.source}</h3>
+                        <FlightIcon fontSize='large' style={{ transform:"rotate(90deg)", margin:"1%"}}/>
+                        <h3>{val.destination}</h3>
+                        
+                        <h2>Price : Rs {val.price}</h2>
                     </div>
                   ))
                 }
+                
                 
             </div>
         </div>

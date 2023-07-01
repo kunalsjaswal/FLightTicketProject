@@ -16,28 +16,14 @@ export const SearchTicketDiv = styled.div`
         .box-2{
             padding: 3% 1%;
             border-radius: 5px;
-            width: 88%;
-            margin: auto;
+            width: 70%;
+            margin-left: 5%;
             background-color: white;
 
-            .selects{
-                display: flex;
-                align-items: center;
-                
-                .date-label{
-                    margin-left: 5%;
-                    font-weight: bold;
-                }
-                input{
-                    width: 15%;
-                    padding: 1%;
-                    margin-left: 1%;
-                    border: 1px solid #b8b8b8;
-                }
-            }
+            
 
             .button-search{
-                margin-left: 43%;
+                margin-left: 40%;
                 margin-top: 2%;
             }
 
@@ -46,47 +32,85 @@ export const SearchTicketDiv = styled.div`
         .user-tickets{
             margin: auto;
             margin-top: 2%;
-            background-color: white;
             width: 90%;
             h2{
-                background-color: #c42929;
                 color:  white;
-
                 padding: 1%;
                 margin-top: 0;
-                padding-left: 3%;
             }
             .tickets{
                 padding: 1%;
                 text-align: center;
+                display: flex;
+                flex-wrap: wrap;
+
+                .no-ticket-card{
+                    width: 20%;
+                    background-color: #e0dede;
+                    padding:2% 2% 4% 2%;
+                    border-radius: 5px;
+                    position: relative;
+                    text-align: left;
+
+                    .circle{
+                        padding: 4%;
+                        background-color: #161616;
+                        position: absolute;
+                        top: 10%;
+                        right: 5%;
+                        border-radius: 50%;
+                    }
+
+                }
                 
                 .ticket-card{
-                    display: grid;
-                    grid-template-columns: 30% 40% 30%;
-                    width: 80%;
-                    /* border-radius: 5px; */
+                   
+                    width:25%;
+                    border-radius: 5px;
+                    background-color: white;
                     margin-bottom:1%;
                     box-shadow: 1px 1px 4px gray;
-                    margin-left: 2%;
+                    padding: 1%;
+                    position: relative;
+                    margin-right: 4%;
+                    margin-bottom: 4%;
+                    .circle{
+                        padding: 4%;
+                        background-color: #161616;
+                        position: absolute;
+                        top: 5%;
+                        right: 5%;
+                        border-radius: 50%;
+                    }
                     .dest{
                         border-radius: 10px;
                         padding: 1%;
                         h2{
-                            background-color: white;
                             color:black;
                         }
                         
                     }
                     .rest{
+                        background-color: #e0dede;
+                        margin-bottom:1%;;
                         text-align: left;
-                        padding-left: 5%;
+                        color: #373636;
+                        padding: 1%;
+                        border-top-right-radius: 5px;
+                        border-top-left-radius: 5px;
+                        padding-left: 15%;
                     }
-                    .cost{
-                        text-align: left;
-                        /* border: 1px solid black; */
-                        height: 60%;
-                        margin-top: 12%;
+                    button{
+                        border: 0;
+                        border-radius: 4px;
+                        padding: 3% 5%;
+                        margin-top: 2%;
+                        background-color: #ca3838;
+                        color: #f3f3f3;
+                        cursor: pointer;
+                        font-weight: bold;
                     }
+                   
                 }
             }
         }

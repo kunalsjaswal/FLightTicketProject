@@ -3,6 +3,7 @@ import { LoginStyleDiv } from './LoginStyle'
 import contextStore from '../../context/contextFile';
 import { Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { server_api } from '../api';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function LoginPage() {
 
   const handleSignup=async(ev)=>{
     ev.preventDefault()
-    const response = await fetch("https://service2-8lpw.onrender.com/skyview/addUser",{
+    const response = await fetch(`${server_api}/addUser`,{
       method:"POST",
       headers:{
         "Content-Type":"application/json",
@@ -73,7 +74,7 @@ function LoginPage() {
       setLoginError(true)
       setErrorMessage("fill all fields.");
     }else{
-      const response = await fetch("https://service2-8lpw.onrender.com/skyview/userLogin",{
+      const response = await fetch(`${server_api}/userLogin`,{
         method:"POST",
         headers:{
         "Content-Type":"application/json",
@@ -100,9 +101,11 @@ function LoginPage() {
   }
 
   const [adminAlert, setadminAlert] = useState(false)
+  
   const handleAdminLogin=()=>{
     if(userAdminData.email==="admin" && userAdminData.password ==="admin"){
         setadminAlert(false)
+        localStorage.setItem('adminId','skyviewID1')
         navigate('/adminPage')
     
       }else{

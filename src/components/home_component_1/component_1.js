@@ -4,8 +4,6 @@ import gif1 from '../../img/flight_TakeOff.gif'
 import boardImg from '../../img/board2.gif'
 import { HomePageDiv } from './HomePageStyle'
 import { HashLink as Link } from 'react-router-hash-link'
-import contextStore from '../../context/contextFile'
-import { useNavigate } from 'react-router-dom'
 
 
 const Component1 = () => {
@@ -13,7 +11,6 @@ const Component1 = () => {
   
   const handleLogout=()=>{
     localStorage.removeItem('token')
-
   }
 
   return (

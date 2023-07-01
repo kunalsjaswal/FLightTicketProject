@@ -16,27 +16,27 @@ const TrendigCities = () => {
         <h3>Book flights to a destination popular with travellers from india</h3>
         
         <div className="image-items">
-            <div>
+            <div  data-aos="fade-left">
                 <img src={cities_list[0]} alt="city" />
                 <p>Bangaluru <br /> {text1}</p>
             </div>
-            <div>
+            <div  data-aos="fade-left">
                 <img src={cities_list[1]} alt="city" />
                 <p>Chandigarh <br /> {text1}</p>
             </div>
-            <div>
+            <div  data-aos="fade-left">
                 <img src={cities_list[2]} alt="city" />
                 <p>Chennai <br /> {text1}</p>
             </div>
-            <div>
+            <div  data-aos="fade-right">
                 <img src={cities_list[3]} alt="city" />
                 <p>Delhi <br /> {text1}</p>
             </div>
-            <div>
+            <div  data-aos="fade-right">
                 <img src={cities_list[4]} alt="city" />
                 <p>Mumbai <br /> {text1}</p>
             </div>
-            <div>
+            <div  data-aos="fade-right">
                 <img src={cities_list[5]} alt="city" />
                 <p>Srinagar <br /> {text1}</p>
             </div>
